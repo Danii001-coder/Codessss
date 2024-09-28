@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Raíz Cuadrada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cálculo de Raíz Cuadrada</h1>
+    <label for="number">Ingrese un número:</label>
+    <input type="number" id="number" required>
+    <button onclick="calculateSquareRoot()">Calcular</button>
+    
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculateSquareRoot() {
+            const number = parseFloat(document.getElementById("number").value);
+            if (isNaN(number)) {
+                document.getElementById("result").innerText = "Por favor, ingresa un número válido.";
+                return;
+            }
+
+            const sqrtValue = Math.sqrt(number).toFixed(1); // Raíz cuadrada redondeada a una cifra decimal
+            const squaredValue = (sqrtValue ** 2).toFixed(2); // Cuadrado de la raíz cuadrada
+            const remainder = (number - squaredValue).toFixed(2); // Resto
+
+            document.getElementById("result").innerText = 
+                `Raíz cuadrada: ${sqrtValue}\n` + 
+                `Cuadrado: ${squaredValue}\n` + 
+                `Resto: ${remainder}`;
+        }
+    </script>
+</body>
+</html>
